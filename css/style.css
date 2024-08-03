@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  block-size: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: lightblue;
+}
+
+img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective: 1500px;
+}
+
+.book {
+  position: relative;
+  width: 350px;
+  height: 500px;
+  transition: transform 0.5s;
+}
+
+.paper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective: 1500px;
+}
+
+.front,
+.back {
+  background-color: wheat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.front {
+  z-index: 1;
+  backface-visibility: hidden;
+  border-left: 3px solid lightblue;
+}
+
+.back {
+  z-index: 0;
+}
+
+.frontCont,
+.backCont {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backCont {
+  transform: rotateY(180deg);
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.5s;
+}
+
+button:hover i {
+  color: black;
+}
+
+button:focus {
+  outline: none;
+}
+
+i {
+  font-size: 50px;
+  color: red;
+}
+
+.flipped .front,
+.flipped .back {
+  transform: rotateY(-180deg);
+}

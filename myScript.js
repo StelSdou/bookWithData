@@ -7,15 +7,11 @@ let pF = document.querySelector("#pF");
 
 nextBtn.addEventListener("click", goNext);
 preBtn.addEventListener("click", goPrev);
-let numOfPage;
-if (document.cookie[1] == ";") numOfPage = document.cookie[0];
-else if (document.cookie[2] == ";") numOfPage = document.cookie.slice(0, 2);
-else numOfPage = document.cookie.slice(0, 3);
-numOfPage = parseInt(numOfPage, 10);
-console.log("MyS: " + numOfPage);
 
-let currentLocation = 1;
-let maxLocation = numOfPage + 1;
+// let numOfPage = 3;
+
+// let currentLocation = 1;
+// let maxLocation = numOfPage + 1;
 
 function openBook() {
   book.style.transform = "translateX(50%)";

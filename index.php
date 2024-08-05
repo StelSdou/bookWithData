@@ -9,10 +9,6 @@
     src="https://kit.fontawesome.com/22e77351d3.js"
     crossorigin="anonymous"
     ></script>
-    <script src="pdfData.js" defer></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-    <script src="pdfImg.js"></script>
     <title>Book</title>
   </head>
   <body>
@@ -25,11 +21,10 @@
     <div id="book" class="book">
       <!-- Paper -->
       <?php
-        echo '<script>console.log(document.cookie)</script>';
-        include('myData.php');
-        session_start();
-        echo '<script>console.log("index: " + '. $_SESSION["num"] .')</script>';
-        $number = $_SESSION["num"];
+        include_once 'count.php';
+        include 'myData.php';
+
+        $f = 1;
         for ($i = 1; $i < $number; $i++) {
           echo'
           <div id="p'.$i.'" class="paper">
@@ -37,14 +32,14 @@
           <div class="front">
             <!-- Contact -->
             <div class="frontCont">
-              <h1>' . $i . '</h1>
+              ' . im($id[$f - 1]) . '
             </div>
           </div>
           <!-- Back -->
           <div class="back">
             <!-- Contact -->
             <div class="backCont">
-              <h1>' . $i . ',5</h1>
+              ' . im($id[$f]) . '
             </div>
           </div>
         </div>
@@ -54,6 +49,7 @@
           }
         </style>
         ';
+        $f = $f + 2;
         }
       ?>
       <div id="pF" class="paper">
@@ -61,14 +57,18 @@
           <div class="front">
             <!-- Contact -->
             <div class="frontCont">
-              <h1>F</h1>
+            <?php
+                echo im(end($id) - 1);
+              ?>
             </div>
           </div>
           <!-- Back -->
           <div class="back">
             <!-- Contact -->
             <div class="backCont">
-              <h1>F,5</h1>
+            <?php
+                echo im(end($id));
+              ?>
             </div>
           </div>
         </div>
@@ -83,7 +83,12 @@
       <i class="fa-solid fa-arrow-right"></i>
     </button>
 
-    <script src="myScript.js" async></script>
+    <script>
+      var numOfPage = parseInt("<?php echo $number; ?>");
+      var currentLocation = 1;
+      var maxLocation = numOfPage + 1;
+    </script>
+    <script src="myScript.js"></script>
     
   </body>
 </html>
